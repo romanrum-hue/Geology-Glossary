@@ -1,4 +1,3 @@
-
 import type { GlossaryTerm } from './types';
 
 export const glossaryData: GlossaryTerm[] = [
@@ -76,7 +75,7 @@ export const glossaryData: GlossaryTerm[] = [
   { id: 72, term: 'Sinkhole', translation: 'Карстовая воронка', transcription: '/ˈsɪŋkhoʊl/', example: 'A large sinkhole opened up in the middle of the road.' },
   { id: 73, term: 'Slate', translation: 'Сланец (кровельный)', transcription: '/sleɪt/', example: 'Slate is a fine-grained metamorphic rock used for roofing.' },
   { id: 74, term: 'Soil', translation: 'Почва', transcription: '/sɔɪl/', example: 'The soil in this region is very fertile for agriculture.' },
-  { id: 5, term: 'Stalactite', translation: 'Сталактит', transcription: '/stəˈlæktaɪt/', example: 'Stalactites hang from the ceiling of a cave.' },
+  { id: 75, term: 'Stalactite', translation: 'Сталактит', transcription: '/stəˈlæktaɪt/', example: 'Stalactites hang from the ceiling of a cave.' },
   { id: 76, term: 'Stalagmite', translation: 'Сталагмит', transcription: '/stəˈlæɡmaɪt/', example: 'Stalagmites grow up from the floor of a cave.' },
   { id: 77, term: 'Stratigraphy', translation: 'Стратиграфия', transcription: '/strəˈtɪɡrəfi/', example: 'Stratigraphy is the study of rock layers and layering.' },
   { id: 78, term: 'Stratum', translation: 'Слой (пласт)', transcription: '/ˈstrɑːtəm/', example: 'Each stratum represents a different period of deposition.' },
