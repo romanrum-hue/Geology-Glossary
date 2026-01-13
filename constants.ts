@@ -1,4 +1,5 @@
-import type { GlossaryTerm } from './types';
+
+import type { GlossaryTerm, ReadingText } from './types';
 
 export const glossaryData: GlossaryTerm[] = [
   { id: 1, term: 'Abrasion', translation: 'Абразия', transcription: '/əˈbreɪʒən/', example: 'The rocks were smooth due to abrasion by the river.' },
@@ -101,4 +102,43 @@ export const glossaryData: GlossaryTerm[] = [
   { id: 98, term: 'Batholith', translation: 'Батолит', transcription: '/ˈbæθəlɪθ/', example: 'A batholith is a large mass of intrusive igneous rock.' },
   { id: 99, term: 'Extrusion', translation: 'Экструзия', transcription: '/ɪkˈstruːʒən/', example: 'Lava flows are a form of volcanic extrusion.' },
   { id: 100, term: 'Isostasy', translation: 'Изостазия', transcription: '/aɪˈsɒstəsi/', example: 'Isostasy explains how the Earth\'s crust floats on the mantle.' }
+];
+
+export const readingTexts: ReadingText[] = [
+  {
+    id: 1,
+    title: 'Field Trip Discussion',
+    type: 'Dialogue',
+    content: `Alex: "Look at this outcrop! The layers of sandstone and shale are so clear."
+Maria: "I think I see a fossil in this stratum. The history of deposition is written right here."
+Alex: "Indeed. You can also see how erosion has shaped this cliff. This whole area is a classic example of sedimentary rock formation."`
+  },
+  {
+    id: 2,
+    title: 'Tectonic Activity',
+    type: 'Scientific Article',
+    content: `The theory of plate tectonics explains the movement of the lithosphere. At a mid-ocean ridge, magma rises from the mantle to form new oceanic crust, primarily composed of basalt. This process creates features like a rift valley. In contrast, at subduction zones, older crust is recycled back into the mantle, driving the entire dynamic system.`
+  },
+  {
+    id: 3,
+    title: 'Volcanic Zone Observations',
+    type: 'Journal Entry',
+    content: `Today we explored the remnants of an ancient volcano. The ground is littered with pumice and sharp obsidian. Our guide warned us about the dangers of a potential pyroclastic flow in active areas. The massive caldera is breathtaking. Nearby, a geyser erupts on schedule, a clear sign of the hotspot activity below. We even saw cooled lava flows from centuries ago.`
+  },
+  {
+    id: 4,
+    title: 'Identifying Rocks',
+    type: 'Dialogue',
+    content: `Teacher: "What type of rock is this?"
+Student: "It's an igneous rock, specifically granite, because I can see large crystals."
+Teacher: "Correct! And this one?"
+Student: "It's a metamorphic rock. Maybe marble or gneiss?"
+Teacher: "Look at the banding. It's gneiss. Each band has a different mineral. Notice the cleavage on this piece of quartz."`
+  },
+  {
+    id: 5,
+    title: 'Glacial Landforms',
+    type: 'Scientific Article',
+    content: `A retreating glacier leaves behind distinct landforms. A terminal moraine, composed of unsorted till, marks its furthest advance. Elongated hills called drumlin fields and winding ridges known as esker formations are also common. The process of glacial abrasion carves the underlying bedrock, while post-glacial weathering continues to shape the landscape.`
+  },
 ];

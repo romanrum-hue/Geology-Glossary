@@ -13,4 +13,11 @@ export interface QuizQuestion {
   correctAnswer: string;
 }
 
-export type View = 'glossary' | 'quiz';
+export interface ReadingText {
+  id: number;
+  title: string;
+  type: 'Dialogue' | 'Scientific Article' | 'Journal Entry';
+  content: string;
+}
+
+export type View = 'glossary' | 'quiz' | 'texts';

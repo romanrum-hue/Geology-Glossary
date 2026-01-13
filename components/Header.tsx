@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ currentView, setView }) => {
           <i className="fas fa-mountain-sun text-4xl text-sky-600 mr-3"></i>
           <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Geology Glossary</h1>
         </div>
-        <nav className="flex space-x-4">
+        <nav className="flex space-x-2 sm:space-x-4">
           <button
             onClick={() => setView('glossary')}
             className={`${commonButtonClasses} ${currentView === 'glossary' ? activeButtonClasses : inactiveButtonClasses}`}
@@ -33,6 +33,13 @@ const Header: React.FC<HeaderProps> = ({ currentView, setView }) => {
           >
             <i className="fas fa-question-circle mr-2"></i>
             Quiz
+          </button>
+          <button
+            onClick={() => setView('texts')}
+            className={`${commonButtonClasses} ${currentView === 'texts' ? activeButtonClasses : inactiveButtonClasses}`}
+          >
+            <i className="fas fa-file-alt mr-2"></i>
+            Texts
           </button>
         </nav>
       </div>

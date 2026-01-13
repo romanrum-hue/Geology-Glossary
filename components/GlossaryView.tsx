@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import GlossaryCard from './GlossaryCard';
 import type { GlossaryTerm } from '../types';
 
@@ -6,10 +6,29 @@ interface GlossaryViewProps {
   terms: GlossaryTerm[];
 }
 
+const LOCAL_STORAGE_KEY = 'geologyGlossaryProgress';
+
 const GlossaryView: React.FC<GlossaryViewProps> = ({ terms }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [flipMode, setFlipMode] = useState<'en-ru' | 'ru-en'>('en-ru');
-  const [termProgress, setTermProgress] = useState<Record<number, number>>({});
+  
+  const [termProgress, setTermProgress] = useState<Record<number, number>>(() => {
+    try {
+      const savedProgress = window.localStorage.getItem(LOCAL_STORAGE_KEY);
+      return savedProgress ? JSON.parse(savedProgress) : {};
+    } catch (error) {
+      console.error("Error reading progress from localStorage", error);
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(termProgress));
+    } catch (error) {
+      console.error("Error saving progress to localStorage", error);
+    }
+  }, [termProgress]);
 
   const handleMarkCorrect = useCallback((termId: number) => {
     setTermProgress(prev => ({
@@ -25,6 +44,12 @@ const GlossaryView: React.FC<GlossaryViewProps> = ({ terms }) => {
     }));
   }, []);
 
+  const handleResetProgress = useCallback(() => {
+    if (window.confirm("Are you sure you want to reset all your learning progress? This action cannot be undone.")) {
+        setTermProgress({});
+    }
+  }, []);
+
   const filteredTerms = useMemo(() => {
     return terms.filter(term =>
       term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -34,8 +59,8 @@ const GlossaryView: React.FC<GlossaryViewProps> = ({ terms }) => {
 
   return (
     <div>
-      <div className="mb-8 sticky top-20 z-5">
-        <div className="relative">
+      <div className="mb-8 sticky top-20 z-5 flex items-center gap-4">
+        <div className="relative flex-grow">
           <input
             type="text"
             placeholder="Search for a term..."
@@ -45,6 +70,14 @@ const GlossaryView: React.FC<GlossaryViewProps> = ({ terms }) => {
           />
           <i className="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
         </div>
+        <button
+            onClick={handleResetProgress}
+            className="px-4 py-3 border border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white transition-colors shadow-sm flex-shrink-0 flex items-center"
+            title="Reset all progress"
+        >
+            <i className="fas fa-trash-alt sm:mr-2"></i>
+            <span className="hidden sm:inline">Reset</span>
+        </button>
       </div>
 
       <div className="mb-8 flex justify-center items-center p-1 bg-slate-200 dark:bg-slate-700 rounded-lg max-w-sm mx-auto shadow-inner">
